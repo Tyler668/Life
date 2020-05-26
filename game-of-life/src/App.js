@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+// import logo from './logo.svg';
+// import './App.css';
+// import AnimFrame from './functions/onAnimFrame.js'
+import { Window } from './components/Window.js'
+import {draw} from './functions/drawShapes.js'
 
 function App() {
+  // function draw() {
+  //   var canvas = document.getElementById('canvas');
+  //   if (canvas.getContext) {
+  //     var ctx = canvas.getContext('2d');
+
+  //     ctx.fillRect(25, 25, 100, 100);
+  //     ctx.clearRect(45, 45, 60, 60);
+  //     ctx.strokeRect(50, 50, 50, 50);
+  //   }
+  // }
+  // useEffect(() =>{
+  //   draw()
+  // })
+
+
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hello world</h1>
+      <Window width={'500px'} height={'500px'} />
     </div>
   );
 }
+
 
 export default App;
