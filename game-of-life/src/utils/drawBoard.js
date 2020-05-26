@@ -22,4 +22,8 @@ export function drawBoard() {
     }
     context.strokeStyle = "black";
     context.stroke();
+
+
+    
+    
   }
