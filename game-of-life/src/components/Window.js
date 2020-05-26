@@ -13,10 +13,7 @@ export const Window = (props) => {
 
     const [cancelAnimationFrame] = useAnimFrame(moment.now(), doAnimation)
 
-
-
-
-    return (<canvas id='display-canvas' style={{ border: '1px solid gray' }} ref={canvasRef} width={props.width} height={props.height} />);
+    return (<canvas id="canvas" style={{margin: '50px', width: '500px', borderRight: '1px solid black', borderBottom: '1px solid gray' }} ref={canvasRef} width={props.width} height={props.height} />);
     // return <div style = {{height: '100px', width: '100px', border: '1px solid black'}}>Epic</div>
 }
 
