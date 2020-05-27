@@ -111,7 +111,7 @@ export function render(grid) {
 
       context.beginPath();
       context.rect(col * resolution, row * resolution, resolution, resolution);
-      context.fillStyle = cell === 1 ? 'black' : 'white';
+      context.fillStyle = cell === 1 ? 'white' : 'black';
       context.stroke()
       context.fill();
     }
