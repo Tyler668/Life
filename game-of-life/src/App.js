@@ -3,12 +3,12 @@ import React, { useEffect, useRef } from 'react';
 // import './App.css';
 // import AnimFrame from './functions/onAnimFrame.js'
 import { Window } from './components/Window.js'
-import {drawBoard} from './utils/drawBoard.js'
+import { drawBoard } from './utils/drawBoard.js'
 
 
 
 function App() {
- 
+
 
   // window.onload = function draw(){
   //   drawBoard()
@@ -17,8 +17,10 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Life</h1>
-      <Window />
+      <div className='display'>
+        <h1 className = 'title'>Life</h1>
+        <Window />
+      </div>
     </div>
   );
 }
@@ -36,7 +38,7 @@ export default App;
  * @param x X coordinate to get pixels from
  * @param y Y coordinate to get pixels from
  * @return Array [R,G,B,A] for the pixel in question, or null if out of bounds
- 
+
 function getPixel(imageData, x, y) {
   const w = imageData.width; // Conveniently the width is here
   const h = imageData.height;
