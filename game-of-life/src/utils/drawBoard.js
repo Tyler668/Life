@@ -71,20 +71,57 @@ export function render(grid) {
       context.beginPath();
       context.rect(col * resolution, row * resolution, resolution, resolution);
       context.fillStyle = cell === 1 ? 'white' : 'black';
-      context.stroke();
+      // context.stroke();
       context.fill();
     }
   }
 }
 
 export function emptyGrid(){
-  return new Array(columns).fill(null)
+  let grid = new Array(columns).fill(null)
   .map(() => new Array(rows).fill(0))
 
+  // render(grid)
 
-
-
-  // render(emptyGrid)
+  return grid
 }
 
+export function customRender(grid, clickX, clickY){
+  const customLayout = grid.map(former => [...former]);
+
+  // console.log('Grid custom receives', grid)
+  let relativeCellX = Math.floor(clickX / resolution)
+  let relativeCellY = Math.floor(clickY / resolution)
+  
+
+  // let relevantCell = customLayout[relativeCellY][relativeCellX]
+  console.log('Cell ', relativeCellX,',', relativeCellY)
+  console.log('Relevant', customLayout[relativeCellX][relativeCellY])
+  // if ( customLayout[relativeCellX][relativeCellY] === 0){customLayout[relativeCellX][relativeCellY] = 1} 
+  // if ( customLayout[relativeCellX][relativeCellY] === 1){customLayout[relativeCellX][relativeCellY] = 0} 
+  // customLayout[0][0] = 1
+  // customLayout[3][10] = 1
+  customLayout[relativeCellX][relativeCellY] = 1
+
+    // for (let col = 0; col < customLayout.length; col++) {
+    //   for (let row = 0; row < customLayout[col].length; row++) {
+    //     // const cell = grid[col][row]
+    //     if(customLayout[col] === relativeCellX && grid[col][row] === relativeCellY){
+
+    //       customLayout[col][row] = 1
+    //       // context.beginPath();
+    //       // context.rect(col * resolution, row * resolution, resolution, resolution);
+    //       // context.fillStyle = 'White'
+    //     }
+        
+    //     // context.stroke();
+    //     // context.fill();
+    //   }
+    // }
+
+    // render(grid)
+    
+    console.log('Custom layout:', customLayout)
+    return(customLayout)
+}
 

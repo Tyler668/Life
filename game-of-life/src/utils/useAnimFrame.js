@@ -1,10 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback, useRef } from 'react'
 
 //Custom hook for using animation frame
+
+function sleep(milliseconds) { //Slow the roll
+    const date = Date.now();
+    let currentDate = null;
+    do {
+        currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
+}
+
 export const useAnimFrame = (timestamp, doAnimCB) => {
     const [prevTimeStamp, setPrevTimeStamp] = useState(timestamp - 30);
-    const [continueAnimation, setContinueAnimation] = useState(true);
+    const continueAnimation = useRef();
     const [started, setStarted] = useState(false)
+    const slowTime = useRef(false)
     
 
     // useEffect(() => {
@@ -17,27 +27,26 @@ export const useAnimFrame = (timestamp, doAnimCB) => {
     // }, [started]);
 
     //Request the first frame to kick things off
-    const onFrame = (timestamp) => {
-        if(continueAnimation){
+    const onFrame = useCallback((timestamp) => {
+        if(continueAnimation.current){
+            if(slowTime.current){
+                sleep(500)
+            }
             console.log('continueanimation',continueAnimation)
             requestAnimationFrame(onFrame);
             const elapsed = prevTimeStamp - timestamp;
             doAnimCB(elapsed);
-        }
+        }}, [continueAnimation])
+    
         // else {
         //    return
         // }
 
-        
-        // console.log(`Current time: ${(timestamp / 1000).toFixed(4)} s, Frame Time: ${elapsed.toFixed(2)} ms`);
-
-        
-    };
 
     //This will stop the hook from calling the next animation frame
     const cancelAnimation = () => {
-        setContinueAnimation(false);
+        continueAnimation.current = false;
     };
 
-    return [cancelAnimation, setStarted, onFrame];
+    return [cancelAnimation, setStarted, onFrame, continueAnimation, slowTime];
 };
