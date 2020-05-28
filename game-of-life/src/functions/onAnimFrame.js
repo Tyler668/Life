@@ -1,25 +1,25 @@
-let prevTimeStamp = null
+// let prevTimeStamp = null
 
-function onAnimFrame(timestamp){
-    //Request the next animation frame
-    requestAnimationFrame(onAnimFrame);
-
-
-    //If we haven't stored the previous frame, fake one
-    if (prevTimeStamp === null){
-        prevTimeStamp = timestamp - 30
-    }
+// function onAnimFrame(timestamp){
+//     //Request the next animation frame
+//     requestAnimationFrame(onAnimFrame);
 
 
-    //Compute how long it took between frames
-    const elapsed = timestamp - prevTimeStamp
+//     //If we haven't stored the previous frame, fake one
+//     if (prevTimeStamp === null){
+//         prevTimeStamp = timestamp - 30
+//     }
 
-    //Recall this info for next frame
-    prevTimeStamp = timestamp
 
-    // console.log(`Current time: ${(timestamp/1000).toFixed(4)} s, Frame Time: ${elapsed.toFixed(2)} ms`);
-}
+//     //Compute how long it took between frames
+//     const elapsed = timestamp - prevTimeStamp
 
-//Request the first animation frame to kick things off
+//     //Recall this info for next frame
+//     prevTimeStamp = timestamp
 
-requestAnimationFrame(onAnimFrame)
+//     // console.log(`Current time: ${(timestamp/1000).toFixed(4)} s, Frame Time: ${elapsed.toFixed(2)} ms`);
+// }
+
+// //Request the first animation frame to kick things off
+
+// requestAnimationFrame(onAnimFrame)

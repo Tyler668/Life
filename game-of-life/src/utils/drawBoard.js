@@ -1,22 +1,19 @@
 
 
+var canvas = document.querySelector('canvas');
+if (canvas.getContext) {
+  var context = canvas.getContext('2d');
+}
+
+var resolution = 10
+
+canvas.width = 800;
+canvas.height = 800;
+
+const columns = canvas.width / resolution;
+const rows = canvas.height / resolution;
 
 export function nextGen(grid) {
-  var canvas = document.querySelector('canvas');
-  // console.log('WIDTH:',canvas.style.width)
-  if (canvas.getContext) {
-    var context = canvas.getContext('2d');
-  }
-
-  var resolution = 10
-
-  canvas.width = 800;
-  canvas.height = 800;
-
-  // Define cols and rows based on board size and res
-  const columns = canvas.width / resolution;
-  const rows = canvas.height / resolution;
-
   const newGen = grid.map(former => [...former]);
 
   for (let col = 0; col < grid.length; col++) {
@@ -48,62 +45,24 @@ export function nextGen(grid) {
       else if (cell === 0 && neighbors === 3) {
         newGen[col][row] = 1
       }
-      // else if (cell === 0 && neighbors === 3) {
-      //   newGen[col][row] = 1
-      // }
 
     }
   }
-  console.log('NEW GEN', newGen)
+  // console.log('NEW GEN', newGen)
   return newGen
 }
 
 
 export function drawBoard() {
-  var canvas = document.querySelector('canvas');
-  // console.log('WIDTH:',canvas.style.width)
-  if (canvas.getContext) {
-    var context = canvas.getContext('2d');
-  }
-
-  var resolution = 10
-
-  canvas.width = 800;
-  canvas.height = 800;
-
-  // Define cols and rows based on board size and res
-  const columns = canvas.width / resolution;
-  const rows = canvas.height / resolution;
-
   let grid = new Array(columns).fill(null)
     .map(() => new Array(rows).fill(null)
       .map(() => Math.floor(Math.random() * 2)));
 
-
-
-
-
   //Populating board
-
-
   return grid
 }
 
 export function render(grid) {
-  var canvas = document.querySelector('canvas');
-  // console.log('WIDTH:',canvas.style.width)
-  if (canvas.getContext) {
-    var context = canvas.getContext('2d');
-  }
-  
-  var resolution = 10
-  
-  canvas.width = 800;
-  canvas.height = 800;
-  
-  const columns = canvas.width / resolution;
-  const rows = canvas.height / resolution;
-
 
   for (let col = 0; col < grid.length; col++) {
     for (let row = 0; row < grid[col].length; row++) {
@@ -111,36 +70,21 @@ export function render(grid) {
 
       context.beginPath();
       context.rect(col * resolution, row * resolution, resolution, resolution);
-      context.fillStyle = cell === 1 ? 'limegreen' : 'white';
-      // context.stroke();
+      context.fillStyle = cell === 1 ? 'white' : 'black';
+      context.stroke();
       context.fill();
     }
   }
 }
 
-
-// let grid = drawBoard()
-
-// function update(){
-//   grid = 
-// }
+export function emptyGrid(){
+  return new Array(columns).fill(null)
+  .map(() => new Array(rows).fill(0))
 
 
 
 
+  // render(emptyGrid)
+}
 
 
-
-
-
-  // var resolution = 10
-
-  // canvas.width = 800;
-  // canvas.height = 800;
-
-  // // Define cols and rows based on board size and res
-  // const columns = canvas.width / resolution;
-  // const rows = canvas.height / resolution;
-
-  // return new Array(columns).fill(null)
-  //   .map(() => new Array(rows).fill(0));

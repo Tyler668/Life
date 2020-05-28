@@ -18,7 +18,6 @@ function App() {
   return (
     <div className="App">
       <div className='display'>
-        <h1 className = 'title'>Life</h1>
         <Window />
       </div>
     </div>
