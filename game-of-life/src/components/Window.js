@@ -19,6 +19,7 @@ export const Window = (props) => {
     // Recursive cb function, calls next frame, increments generation
     const doAnimation = (elapsedTime) => {
         gen = gen+1
+        setGen(gen)
         grid = nextGen(grid)
         render(grid)  
     };
