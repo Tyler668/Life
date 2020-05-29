@@ -30,7 +30,23 @@
 
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <h1 style='color: white; font-size: 60px; font-family:Courier New; display: flex; justify-content: center;', Courier, monospace;' className='title'>Life</h1>
-  <canvas style="display: flex; margin: 0 auto; " id='canvas'></canvas>
+  <div style = "display: flex; flex-direction: row;">
+    <div style = " width: 350px; padding-left:150px; margin:50px; color:white; font-size: 24px; font-family: 'Courier New', Courier, monospace; font-weight: bold;">
+      <h2 style ="margin: 20px">Rules:</h2>
+      <br>
+      <ul>- Any live cell with two or three live neighbours survives.</ul>
+      <br>
+      <ul>- Any dead cell with three live neighbours becomes a live cell.</ul>
+      <br>
+      <ul>- All other live cells die in the next generation. Similarly, all other dead cells stay dead.</ul>
+    </div>
+    <canvas style="display: flex; margin: 0 auto 0 10rem; " id='canvas'></canvas>
+    <div style = " width: 400px; margin-right:150px; color:white; font-size: 24px; font-family: 'Courier New', Courier, monospace; font-weight: bold;">
+      <h2 >About:</h2>
+    <p>The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970. It is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input. One interacts with the Game of Life by creating an initial configuration and observing how it evolves. It is Turing complete and can simulate a universal constructor or any other Turing machine.</p>
+    </div>
+  </div>
+ 
 
   <div id="root">
 

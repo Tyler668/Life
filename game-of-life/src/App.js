@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from 'react';
 // import './App.css';
 // import AnimFrame from './functions/onAnimFrame.js'
 import { Window } from './components/Window.js'
+import Info from './components/info.js'
 import { drawBoard } from './utils/drawBoard.js'
 
 
@@ -17,7 +18,9 @@ function App() {
 
   return (
     <div className="App">
+      
       <div className='display'>
+        {/* <Info className = 'info'/> */}
         <Window />
       </div>
     </div>

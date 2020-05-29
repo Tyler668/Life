@@ -15,32 +15,23 @@ export const useAnimFrame = (timestamp, doAnimCB) => {
     const continueAnimation = useRef();
     const [started, setStarted] = useState(false)
     const slowTime = useRef(false)
-    
+    const generation = useRef(0)
 
-    // useEffect(() => {
-    //     //Only start the animation frame if we haven't in the past 
-    //     if (!started) {
-    //         setStarted(true);
-    //         requestAnimationFrame(onFrame)
-    //     }
-
-    // }, [started]);
 
     //Request the first frame to kick things off
     const onFrame = useCallback((timestamp) => {
         if(continueAnimation.current){
+            generation.current++
             if(slowTime.current){
-                sleep(500)
+                sleep(400)
             }
-            console.log('continueanimation',continueAnimation)
+            // console.log('continueanimation',continueAnimation)
             requestAnimationFrame(onFrame);
+            console.log('Generation:', generation.current)
             const elapsed = prevTimeStamp - timestamp;
             doAnimCB(elapsed);
         }}, [continueAnimation])
-    
-        // else {
-        //    return
-        // }
+
 
 
     //This will stop the hook from calling the next animation frame
@@ -48,5 +39,5 @@ export const useAnimFrame = (timestamp, doAnimCB) => {
         continueAnimation.current = false;
     };
 
-    return [cancelAnimation, setStarted, onFrame, continueAnimation, slowTime];
+    return [cancelAnimation, setStarted, onFrame, continueAnimation, slowTime, generation];
 };

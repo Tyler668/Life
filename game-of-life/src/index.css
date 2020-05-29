@@ -21,11 +21,11 @@ code {
 }
 
 .title{
-  /* display: flex;
-  justify-content: center; */
+  display: flex;
+  justify-content: center;
   font-family: 'Courier New', Courier, monospace;
-  color: limegreen;
-  font-size: 60px;
+  color: white;
+  font-size: 40px;
 }
 
 .controls{
@@ -47,4 +47,9 @@ button{
     font-weight: bold;
     font-size: 20px;
     border-radius: 10%;
+}
+
+
+.info{
+  color:white
 }

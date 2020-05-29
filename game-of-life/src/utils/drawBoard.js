@@ -1,4 +1,5 @@
-
+//Initialize the canvas via DOM selector
+//Set variables for resolution and grid size
 
 var canvas = document.querySelector('canvas');
 if (canvas.getContext) {
@@ -13,7 +14,9 @@ canvas.height = 1000;
 const columns = canvas.width / resolution;
 const rows = canvas.height / resolution;
 
+// Calculate next generation of board based on rules of the game
 export function nextGen(grid) {
+  // generation++
   const newGen = grid.map(former => [...former]);
 
   for (let col = 0; col < grid.length; col++) {
@@ -52,7 +55,7 @@ export function nextGen(grid) {
   return newGen
 }
 
-
+// Draw an initial starting board of random cells
 export function drawBoard() {
   let grid = new Array(columns).fill(null)
     .map(() => new Array(rows).fill(null)
@@ -62,6 +65,7 @@ export function drawBoard() {
   return grid
 }
 
+// Render the current board array to a canvas
 export function render(grid) {
 
   for (let col = 0; col < grid.length; col++) {
@@ -77,6 +81,7 @@ export function render(grid) {
   }
 }
 
+// Prepare an empty grid for custom layouts
 export function emptyGrid(){
   let grid = new Array(columns).fill(null)
   .map(() => new Array(rows).fill(0))
@@ -84,6 +89,7 @@ export function emptyGrid(){
   return grid
 }
 
+// Handle the clicking events and positional canvas rendering for custom squares
 export function customRender(grid, clickX, clickY){
   const customLayout = grid.map(former => [...former]);
 
@@ -100,7 +106,7 @@ export function customRender(grid, clickX, clickY){
     return(customLayout)
 }
 
-
+//Set squares to a random color for prettyfication
 function getRandomColor() {
   var letters = '0123456789ABCDEF';
   var color = '#';
