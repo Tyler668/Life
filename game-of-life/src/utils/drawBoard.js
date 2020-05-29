@@ -7,8 +7,8 @@ if (canvas.getContext) {
 
 var resolution = 10
 
-canvas.width = 800;
-canvas.height = 800;
+canvas.width = 1000;
+canvas.height = 1000;
 
 const columns = canvas.width / resolution;
 const rows = canvas.height / resolution;
@@ -70,7 +70,7 @@ export function render(grid) {
 
       context.beginPath();
       context.rect(col * resolution, row * resolution, resolution, resolution);
-      context.fillStyle = cell === 1 ? 'white' : 'black';
+      context.fillStyle = cell === 1 ? `${getRandomColor()}` : 'black';
       // context.stroke();
       context.fill();
     }
@@ -81,47 +81,31 @@ export function emptyGrid(){
   let grid = new Array(columns).fill(null)
   .map(() => new Array(rows).fill(0))
 
-  // render(grid)
-
   return grid
 }
 
 export function customRender(grid, clickX, clickY){
   const customLayout = grid.map(former => [...former]);
 
-  // console.log('Grid custom receives', grid)
   let relativeCellX = Math.floor(clickX / resolution)
   let relativeCellY = Math.floor(clickY / resolution)
   
-
-  // let relevantCell = customLayout[relativeCellY][relativeCellX]
   console.log('Cell ', relativeCellX,',', relativeCellY)
   console.log('Relevant', customLayout[relativeCellX][relativeCellY])
-  // if ( customLayout[relativeCellX][relativeCellY] === 0){customLayout[relativeCellX][relativeCellY] = 1} 
-  // if ( customLayout[relativeCellX][relativeCellY] === 1){customLayout[relativeCellX][relativeCellY] = 0} 
-  // customLayout[0][0] = 1
-  // customLayout[3][10] = 1
+
   customLayout[relativeCellX][relativeCellY] = 1
 
-    // for (let col = 0; col < customLayout.length; col++) {
-    //   for (let row = 0; row < customLayout[col].length; row++) {
-    //     // const cell = grid[col][row]
-    //     if(customLayout[col] === relativeCellX && grid[col][row] === relativeCellY){
-
-    //       customLayout[col][row] = 1
-    //       // context.beginPath();
-    //       // context.rect(col * resolution, row * resolution, resolution, resolution);
-    //       // context.fillStyle = 'White'
-    //     }
-        
-    //     // context.stroke();
-    //     // context.fill();
-    //   }
-    // }
-
-    // render(grid)
     
     console.log('Custom layout:', customLayout)
     return(customLayout)
 }
 
+
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}

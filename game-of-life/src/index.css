@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
 }
 
 code {
@@ -37,4 +38,13 @@ code {
 
 button{
     margin: 10px;
+    border: 3px solid white;
+    background-color: black;
+    height: 50px;
+    width: 100px;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 10%;
 }

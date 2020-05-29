@@ -94,7 +94,7 @@ export const Window = (props) => {
             <button onClick={handleStart}>Start</button>
             <button onClick={handleReload}>Random</button>
             <button onClick={handleCustom}>Custom</button>
-            <button onClick={handleSlow}>Toggle SloMo</button>
+            <button onClick={handleSlow}>Slo-Mo</button>
         </div>
     );
 }
